@@ -1,0 +1,8 @@
+add_to_attributes '.col-md-12'
+attributes :class => 'navbar-collapse collapse'
+
+set_attributes '#main-nav-bar'
+attributes :class => 'navbar-collapse collapse'
+
+set_attributes '#main-nav-bar ul'
+attributes :class => 'nav navbar-nav navbar-left'

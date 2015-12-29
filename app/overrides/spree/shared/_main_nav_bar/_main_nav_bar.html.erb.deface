@@ -1,0 +1,51 @@
+<!-- replace '.col-md-12' -->
+
+<div class="navbar-header">
+    <a class="navbar-brand home" href="/">
+        <img src="/logo.png" alt="Angel House" class="hidden-xs hidden-sm">
+        <img src="/logo-small.png" alt="Minimal logo" class="visible-xs visible-sm"><span class="sr-only">Minimal - go to homepage</span>
+    </a>
+    <div class="navbar-buttons">
+        <button type="button" class="navbar-toggle btn-primary" data-toggle="collapse" data-target="#">
+            <span class="sr-only">Toggle navigation</span>
+            <i class="fa fa-align-justify"></i>
+        </button>
+        <a class="btn btn-primary navbar-toggle" href="/cart">
+            <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">3 items in cart</span>
+        </a>
+        <button type="button" class="navbar-toggle btn-default" data-toggle="collapse" data-target="#">
+            <span class="sr-only">Toggle search</span>
+            <i class="fa fa-search"></i>
+        </button>
+        <button type="button" class="navbar-toggle btn-default" data-toggle="modal" data-target="#l">
+            <span class="sr-only">User login</span>
+            <i class="fa fa-users"></i>
+        </button>
+
+    </div>
+</div>
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav" data-hook>
+      <li id="home-link" data-hook><%= link_to Spree.t(:home), spree.root_path %></li>
+      <li>
+          <a href="#">Catogary 1</a>
+      </li>
+      <li>
+          <a href="#">Catogary 2</a>
+      </li>
+      <li>
+          <a href="#">About us</a>
+      </li>
+    </ul>
+</div>
+<div class="navbar-collapse collapse right">
+    <ul class="nav navbar-nav navbar-right" data-hook>
+      <li id="link-to-cart" data-hook>
+        <noscript>
+          <%= link_to Spree.t(:cart), '/cart' %>
+        </noscript>
+        &nbsp;
+      </li>
+      <script>Spree.fetch_cart()</script>
+    </ul>
+</div>

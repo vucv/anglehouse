@@ -1,0 +1,132 @@
+<!-- replace '#products' -->
+    <% products.each do |product| %>
+      <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
+      <div id="product_<%= product.id %>" class="col-md-3 col-sm-4" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
+                <div class="product">
+                    <div class="image" style="height: 255px;">
+                        <a href="<%= url %>">
+                            <%= product_image(product, itemprop: "image") %>
+                        </a>
+                        <div class="quick-view-button">
+                            <a href="#" data-toggle="modal" data-target="#<%= product.id %>" class="btn btn-default btn-sm">Quick view</a>
+                        </div>
+                    </div>
+                    <!-- /.image -->
+                    <div class="text">
+                        <h3><a href="<%= url %>"><%= product.name %></a></h3>
+                        <p class="price"><%= display_price(product) %></p>
+                    </div>
+                    <!-- /.text -->
+
+
+                    <!-- /.ribbon -->
+                </div>
+                <!-- /.product -->
+
+      </div>
+      <div class="modal fade" id="<%= product.id %>"  role="dialog" aria-hidden="false" >
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                  <div class="modal-body">
+
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+                      <div class="row quick-view product-main">
+                          <div class="col-sm-6">
+                              <div class="quick-view-main-image">
+                                  <%= product_image(product, itemprop: "image") %>
+                              </div>
+
+                              <div class="ribbon ribbon-quick-view sale">
+                                  <div class="theribbon">SALE</div>
+                                  <div class="ribbon-background"></div>
+                              </div>
+                              <!-- /.ribbon -->
+
+                              <div class="ribbon ribbon-quick-view new">
+                                  <div class="theribbon">NEW</div>
+                                  <div class="ribbon-background"></div>
+                              </div>
+                              <!-- /.ribbon -->
+
+                              <div class="row thumbs">
+                                  <div class="col-xs-4">
+                                      <a href="img/detailbig1.jpg" class="thumb active">
+                                          <%= small_image(product, itemprop: "image") %>
+                                      </a>
+                                  </div>
+                                  <div class="col-xs-4">
+                                      <a href="img/detailbig2.jpg" class="thumb">
+                                          <%= small_image(product, itemprop: "image") %>
+                                      </a>
+                                  </div>
+                                  <div class="col-xs-4">
+                                      <a href="img/detailbig3.jpg" class="thumb">
+                                          <%= small_image(product, itemprop: "image") %>
+                                      </a>
+                                  </div>
+                              </div>
+
+                          </div>
+                          <div class="col-sm-6">
+
+                              <h2><%= product.name %></h2>
+
+                              <p class="text-muted text-small text-center">White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
+
+                              <div class="box">
+
+                                  <form>
+                                      <div class="sizes">
+
+                                          <h3>Available sizes</h3>
+
+                                          <label for="size_s">
+                                              <a href="#">S</a>
+                                              <input type="radio" id="size_s" name="size" value="s" class="size-input">
+                                          </label>
+                                          <label for="size_m">
+                                              <a href="#">M</a>
+                                              <input type="radio" id="size_m" name="size" value="m" class="size-input">
+                                          </label>
+                                          <label for="size_l">
+                                              <a href="#">L</a>
+                                              <input type="radio" id="size_l" name="size" value="l" class="size-input">
+                                          </label>
+
+                                      </div>
+
+                                      <p class="price"><%= display_price(product) %></p>
+
+                                      <p class="text-center">
+                                          <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                                          <button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to wishlist"><i class="fa fa-heart-o"></i>
+                                          </button>
+                                      </p>
+
+
+                                  </form>
+                              </div>
+                              <!-- /.box -->
+
+                              <div class="quick-view-social">
+                                  <h4>Show it to your friends</h4>
+                                  <p>
+                                      <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                                      <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                                      <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+                                      <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                                  </p>
+                              </div>
+
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!--/.modal-dialog-->
+      </div>
+    <% end %>
+    <% reset_cycle("classes") %>
+

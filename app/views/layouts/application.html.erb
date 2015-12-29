@@ -1,0 +1,43 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
+<head data-hook="inside_head">
+    <%= render partial: 'spree/shared/head' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700|Merriweather:400,400italic" rel="stylesheet" type="text/css">
+</head>
+<body class="" id="<%= @body_id || 'default' %>" data-hook="body">
+<%= render partial: 'spree/shared/google_analytics.js' %>
+<%= render partial: 'spree/shared/header' %>
+<div class="container">
+    <div class="row" data-hook>
+        <%= breadcrumbs(@taxon) %>
+
+        <!--<%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>-->
+
+        <div id="content" class="col-sm-12" data-hook>
+            <%= flash_messages %>
+            <%= yield %>
+        </div>
+
+        <%= yield :templates %>
+    </div>
+</div>
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            <p class="pull-left">© 2014. Minimal is responsive template by <a href="http://www.ondrejsvestka.cz" class="external">Ondrej Svestka</a>.</p>
+            <p class="pull-right">
+                <img src="img/payment.png" alt="payments accepted">
+            </p>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
